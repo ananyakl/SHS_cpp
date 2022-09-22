@@ -5,46 +5,46 @@
 
 using namespace std;
 
-//char[] editInput();
-
-
 int editInput() {
-  char userInput[80];
+  char userInput[80]; //initialize variables
   char editedWord[80];
+  bool Palindrome = true;
   
   cout << "Input word" << endl;
   cin.get(userInput, 80);
 
   
-  //int countOrig = 0;
-  //int countMod = 0;
+  int countOrig = 0;
 
-  for (int i = 0; i < strlen(userInput); i++) { //copies a word
-    //cout << strlen(userInput);
+  for (int i = 0; i < strlen(userInput); i++) { //copies only lower case and numbers
     if (userInput[i] != '\0') {
       userInput[i] = tolower(userInput[i]);
-      if ( (47<int(userInput[i])<58) || (96<int(userInput[i]<123)) ) {
-        cout << userInput[i];
-        //countOrig++;
+      if ( ((int(userInput[i])>47)&&(int(userInput[i])<58)) || ((int(userInput[i])>96)&&(int(userInput[i])<123))) { //checks for only numbers and letters
+	editedWord[countOrig] = userInput[i];
+	countOrig++;
       }
-    }
-    else {
-      editedWord[i] = '\0';
     }
   }
 
-  //if 
+  for (int j = 0; j < strlen(editedWord); j++) { //check if same front and back, check if palindrome
+    if (editedWord[j] != editedWord[strlen(editedWord) - j - 1]) {
+      Palindrome = false;
+    }
+  }
 
-  //cout << userInput << endl;
-  //cout << editedWord << endl;
+  if (Palindrome == true) { //if palindrome, say so. Otherwise say it's not a palindrome.
+    cout << "It is a palindrome.";
+  }
+  else {
+    cout << "It is not a palindrome.";
+  }
+  
   return 0 ;
 
 }
 
-int main()
+int main() //main
 {
-  //int editInput();
   editInput();
-  //cout << "Edited Word is: ";
 }
 
