@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+#include <iostream>
+
+class Hash { //Outline of code from https://www.geeksforgeeks.org/c-program-hashing-chaining/
+  int size; //size of list
+  list<int> *table;
+
+
+  public:
+    Hash(int V);  // Constructor
+    void insertItem(int x);
+    void deleteItem(int key);
+    int hashFunction(int x) {
+      return (x % size);
+    }
+    void displayHash();
+};

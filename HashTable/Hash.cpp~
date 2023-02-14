@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+#include <stdlib.h>
+#include <cstdlib> 
+#include <iostream>
+#include "Hash.h"
+
+using namespace std;
+ 
+
+Hash::Hash(int V)
+{
+    this->size = V;
+    table = new list<int>[size];
+}
+ 
+void Hash::insertItem(int key)
+{
+    int index = hashFunction(key);
+    table[index].push_back(key);
+}
+ 
+void Hash::deleteItem(int key)
+{
+  
+  int index = hashFunction(key);
+  
+  list <int> :: iterator i;
+  for (i = table[index].begin();
+           i != table[index].end(); i++) {
+    if (*i == key)
+      break;
+  }
+ 
+  
+  if (i != table[index].end())
+    table[index].erase(i);
+}
+ 
+
+void Hash::displayHash() {
+  for (int i = 0; i < size; i++) {
+    cout << i;
+    for (auto x : table[i])
+      cout << " --> " << x;
+    cout << endl;
+  }
+}
+ 
+
+int main()
+{
+
+  int a[10];
+  for (int i = 0; i < 10; i++) {
+    //rand(); //seed for random number
+    a[i] = rand() % 101;
+  }
+  int n = sizeof(a)/sizeof(a[0]);
+ 
+  Hash h(100);   // 7 is count of buckets in
+               // hash table
+  for (int i = 0; i < n; i++) {
+    h.insertItem(a[i]);
+
+  }
+ 
+
+  h.deleteItem(12);
+ 
+  h.displayHash();
+ 
+  return 0;
+}
