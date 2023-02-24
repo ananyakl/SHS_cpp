@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cstring>
+
+int main () {
+
+
+  
+  return 0;
+}
+
+float OneShot() {
+  float val = 0.1666666666;
+  for (int i = 0 ; i < 4; i++) {
+    val = val * 0.16666666666;
+  }
+  return val;
+  
+}
